@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ThreeJS基础</title>
+    <script type="text/javascript" src="./libs/three.min.js"></script>
+    <link rel="stylesheet" href="./libs/normalize.css">
+  </head>
+  <body>
+    <script>
+      var renderer;//渲染器
+      var width;
+      var height;
+      function initRender(){
+          width = window.innerWidth;
+          height = window.innerHeight;
+          renderer = new THREE.WebGLRenderer({
+            antialias : true//抗锯齿开启
+          });
+          renderer.setSize(width, height);//设置渲染器宽度和高度
+          renderer.setClearColor('#000000', 1.0);//设置背景颜色
+          renderer.setPixelRatio(window.devicePixelRatio);//设置设备像素比
+          document.getElementById('retina').appendChild(renderer.domElement);//把渲染器放置到页面中
+      }
+      //页面加载完成
+      window.onload = function(){
+        createWorld();
+      }
+
+      //模拟现实场景
+      function createWorld() {
+        initRender();//创建渲染器
+        initCamera();//创建相机
+        initLight();//创建光源
+        initObject();//创建物体
+      }
+      
+    </script>
+  </body>
+</html>
